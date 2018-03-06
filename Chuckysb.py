@@ -10,7 +10,7 @@ from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile
 
 nadya = LINETCR.LINE()
-nadya.login(token='EpS0tmC0ZTDhKOGiKDmb.fpzoe5O4f6/QVIFsn6/ZAW.l+ZRTs/GX3nkrHE/Y77Huo1aF65/TOARxV8ppihfEOQ=')
+nadya.login(token='EqxmKCBtkMPlORc61fu8.dM9isXLP8/9zqlbvVCtxMa.g3qsh+KyA2D7OmgoyiVHHzaQM1cb7vZj1/xXvYCfUEA=')
 nadya.loginResult()
 print "Selfbot Login Succes\n\n=====[Sukses Login]====="
 
