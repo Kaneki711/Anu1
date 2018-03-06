@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#Chucky_Bot
 
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
@@ -11,248 +10,229 @@ from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile
 
 nadya = LINETCR.LINE()
-#nadya.login(qr=True)
 nadya.login(token='EpS0tmC0ZTDhKOGiKDmb.fpzoe5O4f6/QVIFsn6/ZAW.l+ZRTs/GX3nkrHE/Y77Huo1aF65/TOARxV8ppihfEOQ=')
 nadya.loginResult()
-print "Nadya-Login Success\n\n=====[Sukses Login]====="
+print "Selfbot Login Succes\n\n=====[Sukses Login]====="
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
 selfMessage ="""
-╔═════════════════════════
-║            ☆☞ S E L F ☜☆
-╠═════════════════════════
-╠➩〘Hi〙
-╠➩〘Me〙
-╠➩〘Mymid〙
-╠➩〘Mid @〙
-╠➩〘SearchID: (ID LINE)〙
-╠➩〘Checkdate (DD/MM/YY)〙
-╠➩〘Kalender〙
-╠➩〘Steal contact〙
-╠➩〘Pp @〙
-╠➩〘Cover @〙
-╠➩〘Auto like〙
-╠➩〘Scbc Text〙
-╠➩〘Cbc Text〙
-╠➩〘Gbc Text〙
-╠➩〘Getbio @〙
-╠➩〘Getinfo @〙
-╠➩〘Getname @〙
-╠➩〘Getprofile @〙
-╠➩〘Getcontact @〙
-╠➩〘Getvid @〙
-╠➩〘Friendlist〙
-╠➩〘Micadd @〙
-╠➩〘Micdel @〙
-╠➩〘Miclist〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Me
+╠[♨▶] Myid
+╠[♨▶] SearchID:
+╠[♨▶] Checkdate:
+╠[♨▶] Kalender
+╠[♨▶] Pp @
+╠[♨▶] Cover @
+╠[♨▶] Auto like
+╠[♨▶] Scbc [Text]
+╠[♨▶] Cbc [Text]
+╠[♨▶] Gbc [Text]
+╠[♨▶] Getbio @
+╠[♨▶] Getname @
+╠[♨▶] Getprofile @
+╠[♨▶] Getcontact @
+╠[♨▶] Getvid @
+╠[♨▶] Friendlist
+╠[♨▶] Micadd @
+╠[♨▶] Micdel @
+╠[♨▶] Miclist
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 botMessage ="""
-╔═════════════════════════
-║             ☆☞ B O T ☜☆
-╠═════════════════════════
-╠➩〘Absen〙
-╠➩〘Respon〙
-╠➩〘Runtime〙
-╠➩〘Mycopy @〙
-╠➩〘Copycontact〙
-╠➩〘Mybackup〙
-╠➩〘Mybio (Text)〙
-╠➩〘Myname (Text)〙
-╠➩〘@bye〙
-╠➩〘Bot on/off〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Absen
+╠[♨▶] Respon
+╠[♨▶] Mycopy
+╠[♨▶] Copycontact
+╠[♨▶] Mybackup
+╠[♨▶] Mybio [Name]
+╠[♨▶] Myname [Text]
+╠[♨▶] @bye
+╠[♨▶] Bot on/off
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 mediaMessage ="""
-╔═════════════════════════
-║           ☆☞ M E D I A ☜☆
-╠═════════════════════════
-╠➩〘Gift〙
-╠➩〘Gift1 @ s/d Gift10 @〙
-╠➩〘Giftbycontact〙
-╠➩〘Gif gore〙
-╠➩〘Google: (Text)〙
-╠➩〘Playstore NamaApp〙
-╠➩〘Fancytext: Text〙
-╠➩〘/musik Judul-Penyanyi〙
-╠➩〘/lirik Judul-Penyanyi〙
-╠➩〘/musrik Judul-Penyanyi〙
-╠➩〘/ig UrsnameInstagram〙
-╠➩〘Checkig UrsnameInstagram〙
-╠➩〘/apakah Text (Kerang Ajaib)〙
-╠➩〘/kapan Text (Kerang Ajaib)〙
-╠➩〘/hari Text (Kerang Ajaib)〙
-╠➩〘/berapa Text (Kerang Ajaib)〙
-╠➩〘/berapakah Text〙
-╠➩〘Youtubelink: Judul Video〙
-╠➩〘Youtubevideo: Judul Video〙
-╠➩〘Youtubesearch: Judul Video〙
-╠➩〘Image NamaGambar〙
-╠➩〘Say-id Text〙
-╠➩〘Say-en Text〙
-╠➩〘Say-jp Text〙
-╠➩〘Image NamaGambar〙
-╠➩〘Tr-id Text (Translate En Ke ID〙
-╠➩〘Tr-en Text (Translate ID Ke En〙
-╠➩〘Tr-th Text (Translate ID Ke Th〙
-╠➩〘Id@en Text (Translate ID Ke En〙
-╠➩〘Id@th Text (Translate ID Ke TH〙
-╠➩〘En@id Text (Translate En Ke ID〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Gift
+╠[♨▶] Gift1 @ s/d Gift10 @
+╠[♨▶] Giftbycontact
+╠[♨▶] Gif gore
+╠[♨▶] Google: [Text]
+╠[♨▶] Playstore [NamaApp]
+╠[♨▶] Fancytext: [Text]
+╠[♨▶] /musik [Judul-Penyanyi]
+╠[♨▶] /lirik [Judul-Penyanyi]
+╠[♨▶] /musrik [Judul-Penyanyi]
+╠[♨▶] /ig [UrsnameInstagram]
+╠[♨▶] Checkig UrsnameInstagram
+╠[♨▶] /apakah [Text Kerang Ajaib]
+╠[♨▶] /kapan [Text Kerang Ajaib]
+╠[♨▶] /hari [Text Kerang Ajaib]
+╠[♨▶] /berapa [Text Kerang Ajaib]
+╠[♨▶] /berapakah [Text]
+╠[♨▶] Youtubelink: [Judul Video]
+╠[♨▶] Youtubevideo: [Judul Video]
+╠[♨▶] Youtubesearch: [Judul Video]
+╠[♨▶] Image NamaGambar
+╠[♨▶] Say-id [Text]
+╠[♨▶] Say-en [Text]
+╠[♨▶] Say-jp [Text]
+╠[♨▶] Image NamaGambar
+╠[♨▶] Tr-id Text (Translate En Ke ID〙
+╠[♨▶] Tr-en Text (Translate ID Ke En〙
+╠[♨▶] Tr-th Text (Translate ID Ke Th〙
+╠[♨▶] Id@en Text (Translate ID Ke En〙
+╠[♨▶] Id@th Text (Translate ID Ke TH〙
+╠[♨▶] En@id Text (Translate En Ke ID〙
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 groupMessage ="""
-╔═════════════════════════
-║           ☆☞ G R O U P ☜☆
-╠═════════════════════════
-╠➩〘Welcome〙
-╠➩〘Say welcome〙
-╠➩〘Invite creator〙
-╠➩〘Setview〙
-╠➩〘Viewseen〙
-╠➩〘Gn: (NamaGroup)〙
-╠➩〘Tag all〙
-╠➩〘Recover〙
-╠➩〘Cancel〙
-╠➩〘Cancelall〙
-╠➩〘Gcreator〙
-╠➩〘Ginfo〙
-╠➩〘Gurl〙
-╠➩〘List group〙
-╠➩〘Pict group: (NamaGroup)〙
-╠➩〘Spam: (Text)〙
-╠➩〘Add all〙
-╠➩〘Kick: (Mid)〙
-╠➩〘Invite: (Mid)〙
-╠➩〘Invite〙
-╠➩〘Memlist〙
-╠➩〘Getgroup image〙
-╠➩〘Urlgroup Image〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Welcome
+╠[♨▶] Invite creator
+╠[♨▶] Setview
+╠[♨▶] Viewseen
+╠[♨▶] Gn: [Name Group]
+╠[♨▶] Tag all
+╠[♨▶] Recover
+╠[♨▶] Cancel
+╠[♨▶] Cancelall
+╠[♨▶] Gcreator
+╠[♨▶] Ginfo
+╠[♨▶] Grul
+╠[♨▶] List group
+╠[♨▶] Pict group: [Name Group]
+╠[♨▶] Spam: [text]
+╠[♨▶] Add all
+╠[♨▶] Kick: [MID]
+╠[♨▶] Invite: [MID]
+╠[♨▶] Memlist
+╠[♨▶] Getgroup image
+╠[♨▶] Urlgroup image
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
-tjia="u14f64e139a3817afaabe27d237afb36b"
+tjia=""
 
 setMessage ="""
-╔═════════════════════════
-║              ☆☞ S E T ☜☆
-╠═════════════════════════
-╠➩〘Sambutan on/off〙
-╠➩〘Mimic on/off〙
-╠➩〘Url on/off〙
-╠➩〘Alwaysread on/off〙
-╠➩〘Sider on/off〙
-╠➩〘Contact on/off〙
-╠➩〘Sticker on〙
-╠➩〘Simisimi on/off〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Sambutan on/off
+╠[♨▶] Mimic on/off
+╠[♨▶] Url on/off
+╠[♨▶] Alwaysread on/off
+╠[♨▶] Sider on/off
+╠[♨▶] Contact on/off
+╠[♨▶] Sticker on/off
+╠[♨▶] Simisimi on/off
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 creatorMessage ="""
-╔═════════════════════════
-║         ☆☞ C R E A T O R ☜☆
-╠═════════════════════════
-╠➩〘Crash〙
-╠➩〘Kickall〙
-╠➩〘Bc: (Text)〙
-╠➩〘Join group: (NamaGroup〙
-╠➩〘Leave group: (NamaGroup〙
-╠➩〘Leave all group〙
-╠➩〘Tag on/off〙
-╠➩〘Bot restart〙
-╠➩〘Turn off〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Crash
+╠[♨▶] Kickall
+╠[♨▶] Bc: [Text]
+╠[♨▶] Join group: [Name Group]
+╠[♨▶] Leave group: [Name Group]
+╠[♨▶] Leave all group
+╠[♨▶] Tag on/off
+╠[♨▶] Bot restart
+╠[♨▶] Turn off
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 adminMessage ="""
-╔═════════════════════════
-║            ☆☞ A D M I N ☜☆
-╠═════════════════════════
-╠➩〘Allprotect on/off〙
-╠➩〘Ban〙
-╠➩〘Unban〙
-╠➩〘Ban @〙
-╠➩〘Unban @〙
-╠➩〘Ban list〙
-╠➩〘Clear ban〙
-╠➩〘Kill〙
-╠➩〘Kick @〙
-╠➩〘Set member: (Jumblah)〙
-╠➩〘Ban group: (NamaGroup〙
-╠➩〘Del ban: (NamaGroup〙
-╠➩〘List ban〙
-╠➩〘Kill ban〙
-╠➩〘Glist〙
-╠➩〘Glistmid〙
-╠➩〘Details group: (Gid)〙
-╠➩〘Cancel invite: (Gid)〙
-╠➩〘Invitemeto: (Gid)〙
-╠➩〘Acc invite〙
-╠➩〘Removechat〙
-╠➩〘Qr on/off〙
-╠➩〘Autokick on/off〙
-╠➩〘Autocancel on/off〙
-╠➩〘Invitepro on/off〙
-╠➩〘Join on/off〙
-╠➩〘Joincancel on/off〙
-╠➩〘Respon1 on/off〙
-╠➩〘Respon2 on/off〙
-╠➩〘Respon3 on/off〙
-╠➩〘Responkick on/off〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Autokick on/off 
+╠[♨▶] Autocancel on/off
+╠[♨▶] Invitepro on/off
+╠[♨▶] Joincancel on/off
+╠[♨▶] Qr on/off
+╠[♨▶] Allprotect on/off
+╠[♨▶] Respon1 on/off
+╠[♨▶] Respon2 on/off
+╠[♨▶] Respon3 on/off
+╠[♨▶] Responkick on/off
+╠[♨▶] Join on/off
+╠[♨▶] Share on/off
+╠[♨▶] Leave on/off
+╠[♨▶] Removechat
+╠[♨▶] Details group: [GID]
+╠[♨▶] Cancel invite: [GID]
+╠[♨▶] Glist
+╠[♨▶] Glistmid
+╠[♨▶] Acc invite
+╠[♨▶] Ban [Share kontak]
+╠[♨▶] Unban [Share Kontak]
+╠[♨▶] Ban @
+╠[♨▶] Unban @
+╠[♨▶] List ban
+╠[♨▶] Killban
+╠[♨▶] Ban group: [GID]
+╠[♨▶] Del ban: [GID]
+╠[♨▶] Kick @
+╠[♨▶] Clear ban
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 helpMessage ="""
-╔═════════════════════════
-║              ☆☞ H E L P ☜☆
-╠═════════════════════════
-╠➩〘Help self〙
-╠➩〘Help bot〙
-╠➩〘Help group〙
-╠➩〘Help set〙
-╠➩〘Help media〙
-╠➩〘Help admin〙
-╠➩〘Help creator〙
-╠➩〘Owner〙
-╠➩〘Pap owner〙
-╠➩〘Speed〙
-╠➩〘Speed test〙
-╠➩〘Status〙
-╠═════════════════════════
-║             💠 By : Nadya 💠
-║    〽️ line.me/ti/p/~nad_nad. 〽️
-╚═════════════════════════
+╔══════════════════
+╠ Selfbot Anarchy
+╠══════════════════
+╠[♨▶] Help1
+╠[♨▶] Help2
+╠[♨▶] Help3
+╠[♨▶] Help4
+╠[♨▶] Help5
+╠[♨▶] Help6
+╠[♨▶] Help7
+╠[♨▶] Speed
+╠[♨▶] Runtime
+╠[♨▶] Creator
+╠══════════════════
+╠ Thanks Team Anarchy
+╚══════════════════
 """
 
 
-KAC=[nadya]
+KAC=[nadya,ki]
 mid = nadya.getProfile().mid
-Bots=[mid]
+Amid = ki.getProfile().mid
+Bots=[mid,Amid]
 Creator=["u14f64e139a3817afaabe27d237afb36b"]
 admin=["u14f64e139a3817afaabe27d237afb36b"]
 
@@ -262,8 +242,8 @@ backup1.displayName = contact.displayName
 backup1.statusMessage = contact.statusMessage                        
 backup1.pictureStatus = contact.pictureStatus
 
-responsename = nadya.getProfile().displayName
-
+responsename = cl.getProfile().displayName
+responsename = ki.getProfile().displayName
 
 wait = {
     "LeaveRoom":True,
@@ -287,10 +267,10 @@ wait = {
     'sticker':False,  
     'timeline':True,
     "Timeline":True,
-    "comment":"Bot Auto Like ©By : Nadya\nContact Me : 👉 line.me/ti/p/~nad_nad.",    
+    "comment":"Autolike By Anarchy Team Bots\n\nline.me/ti/p/~@enr7503k",    
     "commentOn":True,
     "commentBlack":{},
-    "message":"Thx For Add Me (^_^)\nInvite Me To Your Group ヘ(^_^)ヘ",    
+    "message":"Thx For Add Me",    
     "blacklist":{},
     "wblacklist":False,
     "dblacklist":False,
@@ -389,7 +369,7 @@ def _images_get_all_items(page):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)      
+    return '♨▶. %02d Tahun\n♨▶. %02d Bulan\n♨▶. %02d Hari\n♨▶. %02d Jam\n♨▶. %02d Menit\n♨▶. %02d Detik' % (years, month, day, hours, mins, secs)      
     
 def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
     tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
@@ -528,7 +508,7 @@ def summon(to, nama):
     msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
     print "[Command] Tag All"
     try:
-       nadya.sendMessage(msg)
+       cl.sendMessage(msg)
     except Exception as error:
        print error          
                         
@@ -547,11 +527,11 @@ def bot(op):
 
         if op.type == 5:
            if wait["autoAdd"] == True:
-              nadya.findAndAddContactsByMid(op.param1)
+              cl.findAndAddContactsByMid(op.param1)
               if(wait["message"]in[""," ","\n",None]):
                 pass
               else:
-                nadya.sendText(op.param1,str(wait["message"]))
+                cl.sendText(op.param1,str(wait["message"]))
 
 
         if op.type == 55:
@@ -566,7 +546,7 @@ def bot(op):
                 try:
                     if cctv['cyduk'][op.param1]==True:
                         if op.param1 in cctv['point']:
-                            Name = nadya.getContact(op.param2).displayName
+                            Name = cl.getContact(op.param2).displayName
 #                            Name = summon(op.param2)
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
